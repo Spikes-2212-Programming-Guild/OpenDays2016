@@ -1,13 +1,15 @@
 
 package org.usfirst.frc.team2212.robot;
 
+import org.usfirst.frc.team2212.robot.other.SpeedControllersGroup;
+import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team2212.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
-
+import static org.usfirst.frc.team2212.robot.RobotMap.Ports.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -17,9 +19,8 @@ import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-
+	public static Drivetrain drivetrain;
     Command autonomousCommand;
 
     /**
@@ -28,8 +29,9 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+		drivetrain = new Drivetrain(
+				PortsDrive.LEFT_FRONT, PortsDrive.RIGHT_FRONT,
+				PortsDrive.LEFT_REAR, PortsDrive.RIGHT_REAR);
     }
 	
 	public void disabledPeriodic() {
