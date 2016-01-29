@@ -2,12 +2,14 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.other.SpeedControllersGroup;
+import org.usfirst.frc.team2212.robot.subsystems.Camera;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import static org.usfirst.frc.team2212.robot.RobotMap.Ports.*;
 /**
@@ -21,6 +23,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static Drivetrain drivetrain;
+	public static Camera camera;
     Command autonomousCommand;
 
     /**
@@ -32,6 +35,7 @@ public class Robot extends IterativeRobot {
 		drivetrain = new Drivetrain(
 				PortsDrive.LEFT_FRONT, PortsDrive.RIGHT_FRONT,
 				PortsDrive.LEFT_REAR, PortsDrive.RIGHT_REAR);
+		camera = new Camera("vision");
     }
 	
 	public void disabledPeriodic() {

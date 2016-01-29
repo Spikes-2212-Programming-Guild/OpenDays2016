@@ -3,6 +3,7 @@
  */
 package org.usfirst.frc.team2212.robot.other;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**
