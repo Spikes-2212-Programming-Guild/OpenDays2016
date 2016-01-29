@@ -19,8 +19,8 @@ public class OI /* GEVALD */ {
 		
 		public double getSafetyReductionFactor(){
 			return this == PERMISSION_GUEST ?
-					RobotMap.SAFETY_REDUCTION_FACTORS.FACTOR_GUEST : 
-					RobotMap.SAFETY_REDUCTION_FACTORS.FACTOR_SUPERVISER;
+					RobotMap.SafetyReductionFactors.FACTOR_GUEST : 
+					RobotMap.SafetyReductionFactors.FACTOR_SUPERVISER;
 		}
 	}
 
@@ -54,5 +54,17 @@ public class OI /* GEVALD */ {
 		return isSuperviserBlocking() ?
 				Permission.PERMISSION_SUPERVISER :
 				Permission.PERMISSION_GUEST;
+	}
+
+	public double getMaxThrottle() {
+		return Math.max(getSuperviserThrottle(), getGuestThrottle());
+	}
+	
+	public double getSuperviserThrottle(){
+		return JS_SUPERVISER.getThrottle();
+	}
+	
+	public double getGuestThrottle(){
+		return JS_GUEST.getThrottle();
 	}
 }

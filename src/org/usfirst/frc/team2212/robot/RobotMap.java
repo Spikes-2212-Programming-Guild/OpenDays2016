@@ -17,10 +17,25 @@ public final class RobotMap {
 			public static final int LEFT_FRONT = 1, RIGHT_FRONT = 2,
 					LEFT_REAR = 3, RIGHT_REAR = 4;
 		}
+		public static final class PortsCharger{
+			public static final int LEFT = 8, RIGHT = 9, LIMIT = 0;
+		}
+		public static final class PortsGun{
+			public static final int LEFT = 1, RIGHT = 2;
+		}
 	}
 	
-	public static final class SAFETY_REDUCTION_FACTORS { 
+	public static final class SafetyReductionFactors { 
 		public static double FACTOR_GUEST = 0.4,
 				FACTOR_SUPERVISER = 0.8;
+	}
+	
+	public static final class Speeds{
+		public static final double CHARGE = 0.9, UNCHARGE = 0.9,
+				SHOOT = 1;
+	}
+	
+	public static final class Timeouts{
+		public static final int SMALL_AMOUNT_OF_TIME = 1;
 	}
 }

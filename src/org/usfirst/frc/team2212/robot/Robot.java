@@ -3,8 +3,11 @@ package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.other.SpeedControllersGroup;
 import org.usfirst.frc.team2212.robot.subsystems.Camera;
+import org.usfirst.frc.team2212.robot.subsystems.Charger;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2212.robot.subsystems.Gun;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,6 +27,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Drivetrain drivetrain;
 	public static Camera camera;
+	public static Gun gun;
+	public static Charger charger;
     Command autonomousCommand;
 
     /**
@@ -36,6 +41,9 @@ public class Robot extends IterativeRobot {
 				PortsDrive.LEFT_FRONT, PortsDrive.RIGHT_FRONT,
 				PortsDrive.LEFT_REAR, PortsDrive.RIGHT_REAR);
 		camera = new Camera("vision");
+		charger = new Charger(PortsCharger.LEFT, PortsCharger.RIGHT,
+				PortsCharger.LIMIT);
+		gun = new Gun(PortsGun.LEFT, PortsGun.RIGHT);
     }
 	
 	public void disabledPeriodic() {
