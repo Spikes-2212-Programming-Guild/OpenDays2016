@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import org.usfirst.frc.team2212.robot.other.SpeedControllersGroup;
+import org.usfirst.frc.team2212.robot.other.StoppableSubsytem;
 import org.usfirst.frc.team2212.robot.subsystems.Camera;
 import org.usfirst.frc.team2212.robot.subsystems.Charger;
 import org.usfirst.frc.team2212.robot.subsystems.Drivetrain;
@@ -30,7 +31,7 @@ public class Robot extends IterativeRobot {
 	public static Gun gun;
 	public static Charger charger;
     Command autonomousCommand;
-
+    StoppableSubsytem[] allStoppableSubsystems;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.

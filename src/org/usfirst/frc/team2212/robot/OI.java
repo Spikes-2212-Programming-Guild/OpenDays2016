@@ -12,7 +12,8 @@ import org.usfirst.frc.team2212.robot.commands.drive.Turn;
  */
 public class OI /* GEVALD */ {
 
-	public final Joystick JS_GUEST = new Joystick(0), JS_SUPERVISER = new Joystick(1);
+	public final Joystick JS_GUEST = new Joystick(0),
+			JS_SUPERVISER = new Joystick(1);
 
 	public static enum Permission {
 		PERMISSION_GUEST, PERMISSION_SUPERVISER;
@@ -24,12 +25,10 @@ public class OI /* GEVALD */ {
 		}
 	}
 
-	private JoystickButton btnSuperviserBlocking, btnGuestTurn,
-		btnSuperviserTurn;
-
+	private JoystickButton btnSuperviserBlockingAll, btnGuestTurn, btnSuperviserTurn;
 	public OI() {
-		btnSuperviserBlocking = new JoystickButton(JS_SUPERVISER, 1);
-
+		btnSuperviserBlockingAll = new JoystickButton(JS_SUPERVISER, 1);
+	
 		btnGuestTurn = new JoystickButton(JS_GUEST, 5);
 		btnGuestTurn.whileHeld(new Turn());
 		
@@ -38,9 +37,10 @@ public class OI /* GEVALD */ {
 		
 	}
 
-	public boolean isSuperviserBlocking() {
-		return btnSuperviserBlocking.get();
+	public boolean isSuperviserBlockingAll() {
+		return btnSuperviserBlockingAll.get();
 	}
+	
 
 	public Joystick getJoystickByPermission(Permission permission) {
 		return permission == Permission.PERMISSION_GUEST ? JS_GUEST : JS_SUPERVISER;
@@ -51,13 +51,17 @@ public class OI /* GEVALD */ {
 	}
 	
 	public Permission getCurrentPermission(){
-		return isSuperviserBlocking() ?
+		return isSuperviserBlockingAll() ?
 				Permission.PERMISSION_SUPERVISER :
 				Permission.PERMISSION_GUEST;
 	}
 
 	public double getMaxThrottle() {
 		return Math.max(getSuperviserThrottle(), getGuestThrottle());
+	}
+	
+	public double getLimitedThrottle(){
+		return Math.min(getSuperviserThrottle(), getGuestThrottle());
 	}
 	
 	public double getSuperviserThrottle(){

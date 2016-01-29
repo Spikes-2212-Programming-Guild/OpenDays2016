@@ -37,5 +37,6 @@ public final class RobotMap {
 	
 	public static final class Timeouts{
 		public static final int SMALL_AMOUNT_OF_TIME = 1;
+		public static final double TIMEOUT_GUNSTART_TO_CHARGE = 1.5;
 	}
 }
