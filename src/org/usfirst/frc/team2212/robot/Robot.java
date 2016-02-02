@@ -38,9 +38,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-		drivetrain = new Drivetrain(
-				PortsDrive.LEFT_FRONT, PortsDrive.RIGHT_FRONT,
-				PortsDrive.LEFT_REAR, PortsDrive.RIGHT_REAR);
+		
+		drivetrain = new Drivetrain(left, right);
 		camera = new Camera("vision");
 		charger = new Charger(PortsCharger.LEFT, PortsCharger.RIGHT,
 				PortsCharger.LIMIT);
